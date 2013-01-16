@@ -10,6 +10,9 @@ class UploadUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
+  include CarrierWave::MimeTypes
+  process :set_content_type
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog
