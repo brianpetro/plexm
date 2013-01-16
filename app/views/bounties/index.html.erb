@@ -17,7 +17,7 @@
 <% @bounties.each do |bounty| %>
   <tr>
 		<td><%= link_to 'Submit', new_bounty_submission_path(bounty.id), class: 'btn btn-small btn-primary' %></td>
-    <td><%= bounty.user_id %></td>
+    <td><%= get_user_name(bounty.user_id) %></td>
     <td><%= bounty.title %></td>
     <td><%= bounty.body %></td>
     <td><%= bounty.bounty %></td>
