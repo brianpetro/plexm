@@ -1,25 +1,25 @@
 <h1>Listing submissions</h1>
+<% if @bounty.user_id == current_user.id %>
+	<table>
+		<tr>
+		  <th>Upload</th>
+		  <th>Bounty</th>
+		  <th></th>
+		  <th></th>
+		  <th></th>
+		</tr>
 
-<table>
-  <tr>
-    <th>Upload</th>
-    <th>Bounty</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @submissions.each do |submission| %>
-  <tr>
-    <td><%= submission.upload_id %></td>
-    <td><%= submission.bounty_id %></td>
-    <td><%= link_to 'Show', [@bounty, submission] %></td>
-    <td><%= link_to 'Edit', edit_bounty_submission_path(@bounty, submission) %></td>
-    <td><%= link_to 'Destroy', [@bounty, submission], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+	<% @submissions.each do |submission| %>
+		<tr>
+		  <td><%= submission.upload_id %></td>
+		  <td><%= submission.bounty_id %></td>
+		  <td><%= link_to 'Show', [@bounty, submission] %></td>
+		  <td><%= link_to 'Edit', edit_bounty_submission_path(@bounty, submission) %></td>
+		  <td><%= link_to 'Destroy', [@bounty, submission], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+	</table>
+<% else %>
+	<p>Only the bounty owner may see this page.</p>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Submission', new_bounty_submission_path %>
