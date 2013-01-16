@@ -17,7 +17,9 @@
 			<tr><th>Details:</th></tr>
 			<tr><td><%= @bounty.body %></td></tr>
 		</table>
+			Add to the Discussion.
 	</div>
+	
 	<div class="span4">
 		<table class="table table-bordered">
 			<tr><th>Bounty:</th></tr>
@@ -26,6 +28,8 @@
 
 		<% if @bounty.user_id == current_user.id %>
 			<%= link_to 'Edit', edit_bounty_path(@bounty), class: 'btn btn-block btn-primary' %>
+		<% else %>
+			<%= link_to 'Claim Bounty', new_bounty_submission_path(@bounty), class: 'btn btn-block btn-success' %>
 		<% end %>
 		<%= link_to 'Back', bounties_path, class: 'btn btn-block btn-primary' %>
 	</div>
