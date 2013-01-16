@@ -33,3 +33,11 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 gem "figaro", ">= 0.5.0"
 
+gem "carrierwave"
+gem "fog"
+
+gem 'acts-as-taggable-on'
+
+gem 'best_in_place'
+
+gem 'bootswatch-rails'
