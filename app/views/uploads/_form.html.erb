@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.input :title %>
-    <%= f.input :upload %>
+    <%= f.file_field :upload %>
   </div>
 
   <div class="form-actions">
