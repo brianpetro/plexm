@@ -13,13 +13,13 @@
   <tr>
     <td><%= submission.upload_id %></td>
     <td><%= submission.bounty_id %></td>
-    <td><%= link_to 'Show', submission %></td>
-    <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
-    <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@bounty, submission] %></td>
+    <td><%= link_to 'Edit', edit_bounty_submission_path(@bounty, submission) %></td>
+    <td><%= link_to 'Destroy', [@bounty, submission], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Submission', new_submission_path %>
+<%= link_to 'New Submission', new_bounty_submission_path %>
