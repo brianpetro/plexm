@@ -10,9 +10,9 @@ Plexm::Application.routes.draw do
 	end
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'bounties#index'
   end
-  root :to => "home#index"
+  root :to => "home#invite"
   devise_for :users
   resources :users
 end
