@@ -3,31 +3,28 @@
 	<p><span class="lead">Describe what type of track or jingle you are looking for. Set your bounty. Artists and Producers compete for the bounty by submitting the media that gets chosen by the bounty setter.</span></p>
 </div>
 <table class="table table-bordered">
-  <tr>
+	<tr><th>Bounties</th></tr>
+	<tr>
 		<th></th>
-    <th>User</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Bounty</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+		<th>Headline</th>
+		<th>Bounty</th>
+		<th>Set by:</th>
+	</tr>
 <% @bounties.each do |bounty| %>
   <tr>
-		<td><%= link_to 'Submit', new_bounty_submission_path(bounty.id), class: 'btn btn-small btn-primary' %></td>
-    <td><%= get_user_name(bounty.user_id) %></td>
+		<td><%= link_to 'Claim Bounty', new_bounty_submission_path(bounty.id), class: 'btn btn-small btn-primary' %></td>
     <td><%= bounty.title %></td>
-    <td><%= bounty.body %></td>
-    <td><%= bounty.bounty %></td>
-    <td><%= link_to 'Show', bounty, class: 'btn btn-small' %></td>
-    <td><%= link_to 'Edit', edit_bounty_path(bounty), class: 'btn btn-small' %></td>
-    <td><%= link_to 'Destroy', bounty, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small' %></td>
+    <td>$<%= bounty.bounty %></td>
+		<td><%= get_user_name(bounty.user_id) %></td>
+		<% if current_user.has_role? :admin %>
+		  <td><%= link_to 'Show', bounty, class: 'btn btn-small' %></td>
+		  <td><%= link_to 'Edit', edit_bounty_path(bounty), class: 'btn btn-small' %></td>
+		  <td><%= link_to 'Destroy', bounty, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small' %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Bounty', new_bounty_path, class: 'btn btn=small' %>
+<%= link_to 'New Bounty', new_bounty_path, class: 'btn btn-large btn-block btn-primary' %>
