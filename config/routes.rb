@@ -15,7 +15,7 @@ Plexm::Application.routes.draw do
   authenticated :user do
     root :to => 'bounties#index'
   end
-  root :to => "home#invite"
+  root :to => "prelaunches#new"
   devise_for :users
   resources :users
 end
