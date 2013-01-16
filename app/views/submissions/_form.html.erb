@@ -2,6 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.input :upload_id %>
     <%= f.input :bounty_id %>
   </div>
