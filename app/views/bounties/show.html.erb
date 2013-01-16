@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span8">
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @bounty.user_id %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @bounty.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @bounty.body %>
-</p>
-
-<p>
-  <b>Bounty:</b>
-  <%= @bounty.bounty %>
-</p>
+		<h2>
+			<%= @bounty.title %>
+		</h2>
 
 
-<%= link_to 'Edit', edit_bounty_path(@bounty) %> |
-<%= link_to 'Back', bounties_path %>
+		<p>
+			<b>Bounty set by:</b>
+			<%= get_user_name(@bounty.user_id) %>
+		</p>
+
+
+		<table class="table table-bordered">
+			<tr><th>Details:</th></tr>
+			<tr><td><%= @bounty.body %></td></tr>
+		</table>
+	</div>
+	<div class="span4">
+		<table class="table table-bordered">
+			<tr><th>Bounty:</th></tr>
+			<tr><td><h2>$<%= @bounty.bounty %></h2></td></tr>
+		</table>
+
+		<% if @bounty.user_id == current_user.id %>
+			<%= link_to 'Edit', edit_bounty_path(@bounty), class: 'btn btn-block btn-primary' %>
+		<% end %>
+		<%= link_to 'Back', bounties_path, class: 'btn btn-block btn-primary' %>
+	</div>
+</div>

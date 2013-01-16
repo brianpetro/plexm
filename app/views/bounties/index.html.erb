@@ -12,12 +12,11 @@
 	</tr>
 <% @bounties.each do |bounty| %>
   <tr>
-		<td><%= link_to 'Claim Bounty', new_bounty_submission_path(bounty.id), class: 'btn btn-small btn-primary' %></td>
+		<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
     <td><%= bounty.title %></td>
     <td>$<%= bounty.bounty %></td>
 		<td><%= get_user_name(bounty.user_id) %></td>
 		<% if current_user.has_role? :admin %>
-		  <td><%= link_to 'Show', bounty, class: 'btn btn-small' %></td>
 		  <td><%= link_to 'Edit', edit_bounty_path(bounty), class: 'btn btn-small' %></td>
 		  <td><%= link_to 'Destroy', bounty, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small' %></td>
 		<% end %>
