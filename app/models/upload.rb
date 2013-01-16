@@ -3,4 +3,6 @@ class Upload < ActiveRecord::Base
 	belongs_to :user
 	has_many :submissions
 	has_many :bounties, through: :submissions
+
+	mount_uploader :upload, UploadUploader
 end
