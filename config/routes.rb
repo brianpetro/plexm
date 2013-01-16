@@ -1,12 +1,13 @@
 Plexm::Application.routes.draw do
-  resources :submissions
+
 
 
   resources :uploads
 
 
-  resources :bounties
-
+  resources :bounties do
+  	resources :submissions
+	end
 
   authenticated :user do
     root :to => 'home#index'
