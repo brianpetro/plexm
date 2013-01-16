@@ -1,0 +1,23 @@
+<h1>Listing prelaunches</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prelaunches.each do |prelaunch| %>
+  <tr>
+    <td><%= prelaunch.email %></td>
+    <td><%= link_to 'Show', prelaunch %></td>
+    <td><%= link_to 'Edit', edit_prelaunch_path(prelaunch) %></td>
+    <td><%= link_to 'Destroy', prelaunch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prelaunch', new_prelaunch_path %>

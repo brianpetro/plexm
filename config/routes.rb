@@ -2,6 +2,9 @@ Plexm::Application.routes.draw do
 
 
 
+  resources :prelaunches
+
+
   resources :uploads
 
 
