@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116180154) do
+ActiveRecord::Schema.define(:version => 20130116180741) do
 
   create_table "bounties", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130116180154) do
     t.integer  "bounty_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "uploads", :force => true do |t|
