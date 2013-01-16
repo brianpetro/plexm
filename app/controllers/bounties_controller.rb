@@ -1,6 +1,5 @@
 class BountiesController < ApplicationController
 	before_filter :authenticate_user!
-
   # GET /bounties
   # GET /bounties.json
   def index
