@@ -15,13 +15,13 @@
     <td><%= discussion.discussion %></td>
     <td><%= discussion.user_id %></td>
     <td><%= discussion.bounty_id %></td>
-    <td><%= link_to 'Show', discussion %></td>
-    <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-    <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@bounty, discussion] %></td>
+    <td><%= link_to 'Edit', edit_bounty_discussion_path(@bounty, discussion) %></td>
+    <td><%= link_to 'Destroy', [@bounty, discussion], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Discussion', new_discussion_path %>
+<%= link_to 'New Discussion', new_bounty_discussion_path %>
