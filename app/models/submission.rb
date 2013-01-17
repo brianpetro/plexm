@@ -3,4 +3,5 @@ class Submission < ActiveRecord::Base
 	belongs_to :upload
 	belongs_to :bounty
 	belongs_to :user
+	has_many :comments
 end

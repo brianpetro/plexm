@@ -13,5 +13,6 @@ class User < ActiveRecord::Base
 	has_many :bounties
 	has_many :uploads
 	has_many :submissions
-  
+	has_many :discussions
+	has_many :comments  
 end

@@ -3,4 +3,5 @@ class Bounty < ActiveRecord::Base
 	belongs_to :user
 	has_many :submissions
 	has_many :uploads, through: :submissions
+	has_many :discussions
 end
