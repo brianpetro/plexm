@@ -17,20 +17,22 @@
 				<tr><td><%= @bounty.body %></td></tr>
 			</table>
 		</div>
-
+		
+		<h3>Discussions</h3>
+		<p><span class="lead muted">Discuss the buyer's needs on this public forum.</span></p>
 	
 		<ul class="unstyled">
 			<% @bounty.discussions.each do |d| %>
 				<li>
 					<div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span>
-						<ul>
+						<ul class="unstyled">
 							<% @bounty.discussion_comments.each do |dc| %>
 								<% if dc.discussion_id == d.id %>
-									<li><%= dc.comment %> <span class="muted"><%= get_user_name(dc.user_id) %></span></li>
+									<li><i class="icon-chevron-right"></i> <%= dc.comment %> <span class="muted"><%= get_user_name(dc.user_id) %></span></li>
 								<% end %>
 							<% end %>
+							<li><%= link_to 'Add Comment', new_bounty_discussion_comment_path(@bounty, discussion_id: d.id), class: 'btn btn-small' %></li>
 						</ul>
-						<%= link_to 'Add Comment', new_bounty_discussion_comment_path(@bounty, discussion_id: d.id), class: 'btn' %>
 					</div>
 				</li>
 			<% end %>
@@ -49,7 +51,7 @@
 		<% if @bounty.user_id == current_user.id %>
 			<%= link_to 'Edit', edit_bounty_path(@bounty), class: 'btn btn-block btn-primary' %>
 		<% else %>
-			<%= link_to 'Claim Bounty', new_bounty_submission_path(@bounty), class: 'btn btn-block btn-success' %>
+			<%= link_to 'Claim Bounty', new_bounty_submission_path(@bounty), class: 'btn btn-block btn-success btn-large' %>
 		<% end %>
 		<%= link_to 'Back', bounties_path, class: 'btn btn-block btn-primary' %>
 		<div class='well'>
