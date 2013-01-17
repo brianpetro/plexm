@@ -1,4 +1,10 @@
 class DiscussionsController < ApplicationController
+	load_and_authorize_resource
+	before_filter :get_bounty
+	
+	def get_bounty
+		@bounty = Bounty.find(params[:bounty_id])
+	end
   # GET /discussions
   # GET /discussions.json
   def index
@@ -44,7 +50,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.save
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
+        format.html { redirect_to @bounty, notice: 'Discussion was successfully created.' }
         format.json { render json: @discussion, status: :created, location: @discussion }
       else
         format.html { render action: "new" }
@@ -60,7 +66,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
-        format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
+        format.html { redirect_to @bounty, notice: 'Discussion was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +82,7 @@ class DiscussionsController < ApplicationController
     @discussion.destroy
 
     respond_to do |format|
-      format.html { redirect_to discussions_url }
+      format.html { redirect_to @bounty }
       format.json { head :no_content }
     end
   end
