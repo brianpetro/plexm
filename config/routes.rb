@@ -2,6 +2,12 @@ Plexm::Application.routes.draw do
 
 
 
+  resources :comments
+
+
+  resources :discussions
+
+
   resources :prelaunches
 
 

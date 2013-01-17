@@ -11,13 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116210702) do
+ActiveRecord::Schema.define(:version => 20130117155252) do
 
   create_table "bounties", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "body"
     t.integer  "bounty"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "discussions", :force => true do |t|
+    t.text     "discussion"
+    t.integer  "user_id"
+    t.integer  "bounty_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
