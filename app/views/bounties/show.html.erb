@@ -21,7 +21,17 @@
 	
 		<ul class="unstyled">
 			<% @bounty.discussions.each do |d| %>
-				<li><div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span></div></li>
+				<li>
+					<div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span>
+						<ul>
+							<% @bounty.discussion_comments.each do |dc| %>
+								<% if dc.discussion_id == d.id %>
+									<li><%= dc.comment %> <span class="muted"><%= get_user_name(dc.user_id) %></span></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</li>
 			<% end %>
 		</ul>
 
