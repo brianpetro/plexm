@@ -1,0 +1,27 @@
+<h1>Listing discussion_comments</h1>
+
+<table>
+  <tr>
+    <th>Comment</th>
+    <th>Bounty</th>
+    <th>Discussion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discussion_comments.each do |discussion_comment| %>
+  <tr>
+    <td><%= discussion_comment.comment %></td>
+    <td><%= discussion_comment.bounty_id %></td>
+    <td><%= discussion_comment.discussion_id %></td>
+    <td><%= link_to 'Show', discussion_comment %></td>
+    <td><%= link_to 'Edit', edit_discussion_comment_path(discussion_comment) %></td>
+    <td><%= link_to 'Destroy', discussion_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discussion comment', new_discussion_comment_path %>

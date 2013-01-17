@@ -1,5 +1,8 @@
 Plexm::Application.routes.draw do
 
+  resources :discussion_comments
+
+
   resources :prelaunches
   resources :uploads
   resources :bounties do

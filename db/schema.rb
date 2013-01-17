@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117205910) do
+ActiveRecord::Schema.define(:version => 20130117225633) do
 
   create_table "bounties", :force => true do |t|
     t.integer  "user_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20130117205910) do
     t.text     "comment"
     t.integer  "user_id"
     t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "discussion_comments", :force => true do |t|
+    t.text     "comment"
+    t.integer  "bounty_id"
+    t.integer  "discussion_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
