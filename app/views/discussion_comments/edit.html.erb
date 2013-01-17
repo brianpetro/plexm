@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @discussion_comment %> |
-<%= link_to 'Back', discussion_comments_path %>
+<%= link_to 'Show', [@bounty, @discussion_comment] %> |
+<%= link_to 'Back', bounty_discussion_comments_path(@bounty) %>
