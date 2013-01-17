@@ -20,7 +20,7 @@
 		
 		<ul>
 			<% @bounty.discussions.each do |d| %>
-				<li><%= d.discussion %></li>
+				<li><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span></li>
 			<% end %>
 		</ul>
 
