@@ -15,7 +15,7 @@ class BountiesController < ApplicationController
   # GET /bounties/1.json
   def show
     @bounty = Bounty.find(params[:id])
-
+		@discussion = Discussion.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bounty }
