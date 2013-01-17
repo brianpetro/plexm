@@ -4,5 +4,5 @@ class Bounty < ActiveRecord::Base
 	has_many :submissions
 	has_many :uploads, through: :submissions
 	has_many :discussions
-	has_many :discussioncomments
+	has_many :discussion_comments
 end

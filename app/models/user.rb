@@ -15,5 +15,5 @@ class User < ActiveRecord::Base
 	has_many :submissions
 	has_many :discussions
 	has_many :comments
-	has_many :discussioncomments 
+	has_many :discussion_comments 
 end
