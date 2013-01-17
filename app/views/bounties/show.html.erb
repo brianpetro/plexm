@@ -17,7 +17,13 @@
 			<tr><th>Details:</th></tr>
 			<tr><td><%= @bounty.body %></td></tr>
 		</table>
-			Add to the Discussion.
+		
+		<ul>
+			<% @bounty.discussions.each do |d| %>
+				<li><%= d.discussion %></li>
+			<% end %>
+		</ul>
+
 	</div>
 	
 	<div class="span4">
