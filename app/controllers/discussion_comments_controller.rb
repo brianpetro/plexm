@@ -1,4 +1,10 @@
 class DiscussionCommentsController < ApplicationController
+	load_and_authorize_resource
+	before_filter :get_bounty
+	
+	def get_bounty
+		@bounty = Bounty.find(params[:bounty_id])
+	end
   # GET /discussion_comments
   # GET /discussion_comments.json
   def index
@@ -44,7 +50,7 @@ class DiscussionCommentsController < ApplicationController
 
     respond_to do |format|
       if @discussion_comment.save
-        format.html { redirect_to @discussion_comment, notice: 'Discussion comment was successfully created.' }
+        format.html { redirect_to @bounty, notice: 'Discussion comment was successfully created.' }
         format.json { render json: @discussion_comment, status: :created, location: @discussion_comment }
       else
         format.html { render action: "new" }
@@ -60,7 +66,7 @@ class DiscussionCommentsController < ApplicationController
 
     respond_to do |format|
       if @discussion_comment.update_attributes(params[:discussion_comment])
-        format.html { redirect_to @discussion_comment, notice: 'Discussion comment was successfully updated.' }
+        format.html { redirect_to @bounty, notice: 'Discussion comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +82,7 @@ class DiscussionCommentsController < ApplicationController
     @discussion_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to discussion_comments_url }
+      format.html { redirect_to bounty_discussion_comments_url }
       format.json { head :no_content }
     end
   end
