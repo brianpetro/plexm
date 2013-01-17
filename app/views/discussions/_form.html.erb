@@ -1,13 +1,10 @@
-<%= simple_form_for([@bounty, @discussion]) do |f| %>
-  <%= f.error_notification %>
+<%= form_for [@bounty, @discussion] do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :discussion %>
+
+  <div class="well">
+    <%= f.text_area :discussion, class: "discussion-box", placeholder: "Ask questions to learn more about your customer." %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :bounty_id, value: @bounty.id %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit "Start Discussion" %>
   </div>
 <% end %>
