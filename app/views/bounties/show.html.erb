@@ -1,28 +1,31 @@
 <div class="row">
 	<div class="span8">
-		<p id="notice"><%= notice %></p>
-
-		<h2>
-			<%= @bounty.title %>
-		</h2>
-
-
-		<p>
-			<b>Bounty set by:</b>
-			<%= get_user_name(@bounty.user_id) %>
-		</p>
+		<div class="well well-small">
+			<h2>
+				<%= @bounty.title %>
+			</h2>
 
 
-		<table class="table table-bordered">
-			<tr><th>Details:</th></tr>
-			<tr><td><%= @bounty.body %></td></tr>
-		</table>
-		
-		<ul>
+			<p>
+				<b>Bounty set by:</b>
+				<%= get_user_name(@bounty.user_id) %>
+			</p>
+
+
+			<table class="table table-bordered">
+				<tr><th>Details:</th></tr>
+				<tr><td><%= @bounty.body %></td></tr>
+			</table>
+		</div>
+
+	
+		<ul class="unstyled">
 			<% @bounty.discussions.each do |d| %>
-				<li><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span></li>
+				<li><div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span></div></li>
 			<% end %>
 		</ul>
+
+		<%= render 'discussions/form' %>
 
 	</div>
 	
@@ -38,5 +41,12 @@
 			<%= link_to 'Claim Bounty', new_bounty_submission_path(@bounty), class: 'btn btn-block btn-success' %>
 		<% end %>
 		<%= link_to 'Back', bounties_path, class: 'btn btn-block btn-primary' %>
+		<div class='well'>
+			<h3>Bounty Page</h3>
+			<p>
+				This page displays the details of a bounty. Page access is granted to all users. Page features and ability vary between buyers (specifically the bounty owner) and the sellers. 
+			</p>
+		</div>
+
 	</div>
 </div>
