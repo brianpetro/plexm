@@ -30,6 +30,7 @@
 								<% end %>
 							<% end %>
 						</ul>
+						<%= link_to 'Add Comment', new_bounty_discussion_comment_path(@bounty, discussion_id: d.id), class: 'btn' %>
 					</div>
 				</li>
 			<% end %>
