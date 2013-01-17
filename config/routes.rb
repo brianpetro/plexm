@@ -1,21 +1,12 @@
 Plexm::Application.routes.draw do
 
-
-
-  resources :comments
-
-
-  resources :discussions
-
-
   resources :prelaunches
-
-
   resources :uploads
-
-
   resources :bounties do
-  	resources :submissions
+		resources :discussions
+  	resources :submissions do
+		  resources :comments
+		end
 	end
 
   authenticated :user do
