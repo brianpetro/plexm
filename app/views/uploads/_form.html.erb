@@ -6,7 +6,9 @@
     <%= f.input :title %>
     <%= f.file_field :upload %>
   </div>
-
+	<div>
+    <p><%= f.check_box :agreement %> Check this box to agree to our terms.</p>
+	</div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
