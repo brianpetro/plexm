@@ -1,6 +1,14 @@
 <div class="row">
 	<div class="span8">
 		<div class="well well-small">
+			<table class="table table-bordered">
+				<tr><th>Submissions</th></tr>
+				<% @bounty.uploads.each do |up| %>
+					<tr><td><%= up.upload %></td></tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="well well-small">
 			<h2>
 				<%= @bounty.title %>
 			</h2>
