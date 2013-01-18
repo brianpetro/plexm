@@ -4,7 +4,7 @@
 		<%= link_to 'Bounties', bounties_path %>
 	</li>
 	<li>
-		<%= link_to 'My Uploads', user_uploads_path %>
+		<%= link_to 'My Uploads', user_uploads_path(current_user.id) %>
 	</li>
 </ul>
 <ul class="nav pull-right">
