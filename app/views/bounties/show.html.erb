@@ -1,26 +1,6 @@
 <div class="row">
 	<div class="span8">
-		<% if @bounty.user_id == current_user.id %>
-			<div class="well well-small">
-				<table class="table table-bordered">
-					<tr>
-						<th>Submissions</th>
-					</tr>
-					<tr>
-						<th>Title</th>
-						<th>Play</th>
-						<th>Select</th>
-					</tr>
-					<% @bounty.uploads.each do |up| %>
-						<tr>
-							<td><%= up.title %></td>
-							<td><%= truncate up.upload.to_s, length: 50 %></td>
-							<td></td>
-						</tr>
-					<% end %>
-				</table>
-			</div>
-		<% end %>
+
 
 		<div class="well well-small">
 			<h2>
