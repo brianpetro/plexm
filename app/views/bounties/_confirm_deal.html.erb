@@ -13,7 +13,7 @@
 					<tr>
 						<td><%= up.title %></td>
 						<td><%= truncate up.upload.to_s, length: 50 %></td>
-						<td><%= f.radio_button 'winner', up.id %></td>
+						<td><%= f.radio_button :winner, up.id %></td>
 					</tr>
 				<% end %>
 			</table>
@@ -22,7 +22,7 @@
 			<% if @bounty.winner? %>
 				<span class="lead">You selected <%= @bounty.winner %> to win.</span>
 
-				<button class="btn btn-danger">Confirm</button>
+				<%= link_to 'Confirm', edit_user_upload_path(get_user_id_from_upload_id(@bounty.winner), @bounty.winner), class: 'btn btn-danger' %>
 			<% end %>
 
 		</div>
