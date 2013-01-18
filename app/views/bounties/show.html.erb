@@ -2,9 +2,20 @@
 	<div class="span8">
 		<div class="well well-small">
 			<table class="table table-bordered">
-				<tr><th>Submissions</th></tr>
+				<tr>
+					<th>Submissions</th>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<th>Play</th>
+					<th>Select</th>
+				</tr>
 				<% @bounty.uploads.each do |up| %>
-					<tr><td><%= up.upload %></td></tr>
+					<tr>
+						<td><%= up.title %></td>
+						<td><%= truncate up.upload.to_s, length: 50 %></td>
+						<td></td>
+					</tr>
 				<% end %>
 			</table>
 		</div>
