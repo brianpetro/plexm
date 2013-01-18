@@ -1,9 +1,14 @@
 class UploadsController < ApplicationController
-	before_filter :authenticate_user!
+	load_and_authorize_resource
+	before_filter :get_user
+	
+	def get_user
+		@user = User.find(params[:user_id])
+	end
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = @user.uploads
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +50,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
+        format.html { redirect_to [@user, @upload], notice: 'Upload was successfully created.' }
         format.json { render json: @upload, status: :created, location: @upload }
       else
         format.html { render action: "new" }
@@ -61,7 +66,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.update_attributes(params[:upload])
-        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
+        format.html { redirect_to [@user, @upload], notice: 'Upload was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +82,7 @@ class UploadsController < ApplicationController
     @upload.destroy
 
     respond_to do |format|
-      format.html { redirect_to uploads_url }
+      format.html { redirect_to user_uploads_url }
       format.json { head :no_content }
     end
   end
