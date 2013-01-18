@@ -4,7 +4,7 @@ Plexm::Application.routes.draw do
 
 
   resources :prelaunches
-  resources :uploads
+
   resources :bounties do
 		resources :discussions
 	  resources :discussion_comments
@@ -18,5 +18,7 @@ Plexm::Application.routes.draw do
   end
   root :to => "prelaunches#index"
   devise_for :users
-  resources :users
+  resources :users do
+	  resources :uploads
+	end
 end
