@@ -7,5 +7,5 @@ class Upload < ActiveRecord::Base
 	validates_presence_of :title
 	validates_presence_of :upload
 	validates_presence_of :artist
-	validates_acceptance_of :agreement
+	validates_presence_of :agreement
 end
