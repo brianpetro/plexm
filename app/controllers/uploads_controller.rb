@@ -86,4 +86,10 @@ class UploadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def confirm
+		@upload = Upload.find(params[:id])
+		@buyer = current_user.id
+		@seller = User.find(params[:id])
+	end
 end

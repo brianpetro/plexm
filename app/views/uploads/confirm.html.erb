@@ -1,0 +1,4 @@
+<%= form_for [@user, @upload] do |f| %>
+	<%= f.hidden_field :user_id, value: @buyer %>
+	<%= f.submit, 'Confirm' %>
+<% end %>
