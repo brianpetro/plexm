@@ -1,5 +1,5 @@
 class Bounty < ActiveRecord::Base
-  attr_accessible :body, :bounty, :title, :user_id, :paid
+  attr_accessible :body, :bounty, :title, :user_id, :paid, :winner
   accepts_nested_attributes_for :uploads
 	belongs_to :user
 	has_many :submissions
