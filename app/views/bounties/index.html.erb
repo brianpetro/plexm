@@ -11,18 +11,38 @@
 		<th>Set by:</th>
 	</tr>
 <% @bounties.each do |bounty| %>
-  <tr>
-		<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
-    <td><%= bounty.title %></td>
-    <td>$<%= bounty.bounty %></td>
-		<td><%= get_user_name(bounty.user_id) %></td>
-		<% if current_user.has_role? :admin %>
-		  <td><%= link_to 'Edit', edit_bounty_path(bounty), class: 'btn btn-small' %></td>
-		  <td><%= link_to 'Destroy', bounty, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small' %></td>
-		<% end %>
-  </tr>
+	<% if bounty.paid? %>
+		<tr>
+			<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+		  <td><%= bounty.title %></td>
+		  <td>$<%= bounty.bounty %></td>
+			<td><%= get_user_name(bounty.user_id) %></td>
+		</tr>
+	<% end %>
 <% end %>
 </table>
+
+<% if current_user.has_role? :admin %>
+<table class="table table-bordered">
+	<tr><th>Unpaid Bounties (Admin)</th></tr>
+	<tr>
+		<th></th>
+		<th>Headline</th>
+		<th>Bounty</th>
+		<th>Set by:</th>
+	</tr>
+<% @bounties.each do |bounty| %>
+	<% if bounty.paid == false %>
+		<tr>
+			<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+		  <td><%= bounty.title %></td>
+		  <td>$<%= bounty.bounty %></td>
+			<td><%= get_user_name(bounty.user_id) %></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+<% end %>
 
 <br />
 
