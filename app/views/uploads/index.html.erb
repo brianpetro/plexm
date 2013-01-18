@@ -13,13 +13,13 @@
   <tr>
     <td><%= upload.title %></td>
     <td><%= upload.upload %></td>
-    <td><%= link_to 'Show', upload %></td>
-    <td><%= link_to 'Edit', edit_upload_path(upload) %></td>
-    <td><%= link_to 'Destroy', upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@user, upload] %></td>
+    <td><%= link_to 'Edit', edit_user_upload_path(@user, upload) %></td>
+    <td><%= link_to 'Destroy', [@user, upload], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Upload', new_upload_path %>
+<%= link_to 'New Upload', new_user_upload_path %>

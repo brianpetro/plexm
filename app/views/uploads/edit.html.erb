@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @upload %> |
-<%= link_to 'Back', uploads_path %>
+<%= link_to 'Show', [@user, @upload] %> |
+<%= link_to 'Back', user_uploads_path(@user) %>
