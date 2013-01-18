@@ -1,21 +1,29 @@
-<% if @bounty.user_id == current_user.id %>
-	<div class="well well-small">
-		<table class="table table-bordered">
-			<tr>
-				<th>Submissions</th>
-			</tr>
-			<tr>
-				<th>Title</th>
-				<th>Play</th>
-				<th>Select</th>
-			</tr>
-			<% @bounty.uploads.each do |up| %>
+<%= form_for @bounty do |f| %>
+		<div class="well well-small">
+			<table class="table table-bordered">
 				<tr>
-					<td><%= up.title %></td>
-					<td><%= truncate up.upload.to_s, length: 50 %></td>
-					<td><%= radio_button_tag 'winner', up.id %></td>
+					<th>Submissions</th>
 				</tr>
+				<tr>
+					<th>Title</th>
+					<th>Play</th>
+					<th>Select</th>
+				</tr>
+				<% @bounty.uploads.each do |up| %>
+					<tr>
+						<td><%= up.title %></td>
+						<td><%= truncate up.upload.to_s, length: 50 %></td>
+						<td><%= f.radio_button 'winner', up.id %></td>
+					</tr>
+				<% end %>
+			</table>
+			<%= f.submit 'Select Winner', class: 'btn' %>
+
+			<% if @bounty.winner? %>
+				<span class="lead">You selected <%= @bounty.winner %> to win.</span>
+
+				<button class="btn btn-danger">Confirm</button>
 			<% end %>
-		</table>
-	</div>
+
+		</div>
 <% end %>
