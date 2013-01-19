@@ -3,7 +3,7 @@
 	<p><span class="lead">Describe what type of track or jingle you are looking for. Set your bounty. Artists and Producers compete for the bounty by submitting the media that gets chosen by the bounty setter.</span></p>
 </div>
 <table class="table table-bordered">
-	<tr><th>Bounties</th></tr>
+	<tr><th>Live Bounties</th></tr>
 	<tr>
 		<th></th>
 		<th>Headline</th>
@@ -12,36 +12,42 @@
 	</tr>
 <% @bounties.each do |bounty| %>
 	<% if bounty.paid? %>
-		<tr>
-			<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
-		  <td><%= bounty.title %></td>
-		  <td>$<%= bounty.bounty %></td>
-			<td><%= get_user_name(bounty.user_id) %></td>
-		</tr>
+		<% unless bounty.closed? %>
+			<tr>
+				<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+				<td><%= bounty.title %></td>
+				<td>$<%= bounty.bounty %></td>
+				<td><%= get_user_name(bounty.user_id) %></td>
+			</tr>
+		<% end %>
 	<% end %>
 <% end %>
 </table>
 
 <% if current_user.has_role? :admin %>
-<table class="table table-bordered">
-	<tr><th>Unpaid Bounties (Admin)</th></tr>
-	<tr>
-		<th></th>
-		<th>Headline</th>
-		<th>Bounty</th>
-		<th>Set by:</th>
-	</tr>
-<% @bounties.each do |bounty| %>
-	<% if bounty.paid == false %>
+	<table class="table table-bordered">
+		<tr><th>Bounties Record (Admin)</th></tr>
 		<tr>
-			<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
-		  <td><%= bounty.title %></td>
-		  <td>$<%= bounty.bounty %></td>
-			<td><%= get_user_name(bounty.user_id) %></td>
+			<th></th>
+			<th>Headline</th>
+			<th>Bounty</th>
+			<th>Set by:</th>
+			<th>Paid</th>
+			<th>Closed</th>
 		</tr>
+	<% @bounties.each do |bounty| %>
+		<% if bounty.paid == false or bounty.closed? %>
+			<tr>
+				<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+				<td><%= bounty.title %></td>
+				<td>$<%= bounty.bounty %></td>
+				<td><%= get_user_name(bounty.user_id) %></td>
+				<td><%= bounty.paid %></td>
+				<td><%= bounty.closed %></td>
+			</tr>
+		<% end %>
 	<% end %>
-<% end %>
-</table>
+	</table>
 <% end %>
 
 <br />
