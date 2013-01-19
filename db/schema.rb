@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118215011) do
+ActiveRecord::Schema.define(:version => 20130119013527) do
 
   create_table "bounties", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130118215011) do
     t.boolean  "display"
     t.boolean  "paid",       :default => false
     t.integer  "winner"
+    t.boolean  "closed"
   end
 
   create_table "comments", :force => true do |t|
