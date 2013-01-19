@@ -43,6 +43,12 @@
 	</div>
 	
 	<div class="span4">
+		<% if @bounty.closed? %>
+			<div class="alert alert-success">
+				<h1>Bounty Closed!</h1>
+				<span class="lead">Confirm your selection to sign for exclusive rights.</span>
+			</div>
+		<% end %>
 		<table class="table table-bordered">
 			<tr><th>Bounty:</th></tr>
 			<tr><td><h2>$<%= @bounty.bounty %></h2></td></tr>
