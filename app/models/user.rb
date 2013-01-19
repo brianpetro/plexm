@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
   rolify
+  after_create :assign_default_role
+
+  def assign_default_role
+    add_role(:standard)
+  end
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
