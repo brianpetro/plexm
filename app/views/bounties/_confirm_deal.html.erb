@@ -17,6 +17,7 @@
 					</tr>
 				<% end %>
 			</table>
+			<%= f.hidden_field :closed, value: true %>
 			<%= f.submit 'Select Winner', class: 'btn' %>
 
 			<% if @bounty.winner? %>
