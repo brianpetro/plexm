@@ -1,25 +1,9 @@
-<h1>Listing uploads</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Upload</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @uploads.each do |upload| %>
-  <tr>
-    <td><%= upload.title %></td>
-    <td><%= upload.upload %></td>
-    <td><%= link_to 'Show', [@user, upload] %></td>
-    <td><%= link_to 'Edit', edit_user_upload_path(@user, upload) %></td>
-    <td><%= link_to 'Destroy', [@user, upload], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% unless current_user.has_role? :admin %>
+	<% if @user.id == current_user.id %>
+		<h1><%= @user.name %>'s Uploads</h1>
+		<%= render 'user_uploads' %>
+	<% end %>
+<% else %>
+	<h1><%= @user.name %>'s Admin Panel</h1>
+	<%= render 'user_uploads' %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Upload', new_user_upload_path %>

@@ -1,6 +1,14 @@
-<h1>Editing upload</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', [@user, @upload] %> |
-<%= link_to 'Back', user_uploads_path(@user) %>
+<% if @key == nil %>
+	<h1>Editing upload</h1>
+	<%= render 'form' %>
+<% else %>
+	<% if @key == 'secret' %>
+		<h2>Confirm your agreement with <%= @user.name %></h2>
+		<%= form_for [@user, @upload] do |f| %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.submit 'Confirm' %>
+		<% end %>
+	<% else %>
+		'No bafoonery here'
+	<% end %>
+<% end %>
