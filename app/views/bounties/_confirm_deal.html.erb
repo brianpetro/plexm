@@ -22,7 +22,7 @@
 			<% if @bounty.winner? %>
 				<span class="lead">You selected <%= @bounty.winner %> to win.</span>
 
-				<%= link_to 'Confirm', confirm_user_upload_path(get_user_id_from_upload_id(@bounty.winner), @bounty.winner), class: 'btn btn-danger' %>
+				<%= link_to 'Confirm', edit_user_upload_path(get_user_id_from_upload_id(@bounty.winner), @bounty.winner, key: 'secret'), class: 'btn btn-danger' %>
 			<% end %>
 
 		</div>
