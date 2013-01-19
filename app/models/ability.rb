@@ -10,7 +10,7 @@ class Ability
 			can :read, Prelaunch
       if user.has_role? :standard
 				can :manage, Bounty
-				can :manage, Uploads
+				can :manage, Upload
 				can :manage, User
 			end
     end
