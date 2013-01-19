@@ -40,7 +40,10 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1/edit
   def edit
+		@key = params[:key]
     @upload = Upload.find(params[:id])
+		@buyer = current_user.id
+		@seller = User.find(params[:user_id])
   end
 
   # POST /uploads
@@ -66,7 +69,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.update_attributes(params[:upload])
-        format.html { redirect_to [@user, @upload], notice: 'Upload was successfully updated.' }
+        format.html { redirect_to user_uploads_path(current_user.id), notice: 'Upload was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,10 +89,4 @@ class UploadsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-	def confirm
-		@upload = Upload.find(params[:id])
-		@buyer = current_user.id
-		@seller = User.find(params[:id])
-	end
 end
