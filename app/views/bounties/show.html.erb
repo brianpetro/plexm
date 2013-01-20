@@ -66,8 +66,10 @@
 				This page displays the details of a bounty. Page access is granted to all users. Page features and ability vary between buyers (specifically the bounty owner) and the sellers. 
 			</p>
 		</div>
-		<% unless @bounty.paid? %>
-			<a href="http://www.plexm.com" class="dwolla_button btn-block btn" data-name="Bounty Package" data-desc="Buyer selects desired submission by artist who wants the bounty." data-amount="<%= @bounty.bounty %>" data-shipping="0" data-tax="0" data-key="8d78xAb4zBaL+CzTCdECEL0/sjboDegixOCrCubwFMEONlWQmB">Set Bounty with Dwolla</a>
+		<% if @bounty.user_id == current_user.id %>
+			<% unless @bounty.paid? %>
+				<a href="http://www.plexm.com" class="dwolla_button btn-block btn" data-name="Bounty Package" data-desc="Buyer selects desired submission by artist who wants the bounty." data-amount="<%= @bounty.bounty %>" data-shipping="0" data-tax="0" data-key="8d78xAb4zBaL+CzTCdECEL0/sjboDegixOCrCubwFMEONlWQmB">Set Bounty with Dwolla</a>
+			<% end %>
 		<% end %>
 	</div>
 </div>
