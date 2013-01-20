@@ -12,7 +12,9 @@ class Ability
 				can :manage, Bounty
 				can :manage, Upload
 				can :manage, User
+				can :manage, Discussion
 				can :manage, Comment
+				can :manage, DiscussionComment
 			end
     end
     # Define abilities for the passed in user here. For example:
