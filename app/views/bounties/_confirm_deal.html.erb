@@ -12,7 +12,7 @@
 				<% @bounty.uploads.each do |up| %>
 					<tr>
 						<td><%= up.title %></td>
-						<td><%= truncate up.upload.to_s, length: 50 %></td>
+						<td><audio src="<%= up.upload %>" controls="controls"></audio></td>
 						<td><%= f.radio_button :winner, up.id %></td>
 					</tr>
 				<% end %>
