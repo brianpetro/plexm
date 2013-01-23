@@ -42,4 +42,4 @@ gem 'best_in_place'
 
 gem 'bootswatch-rails'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', "1.4.0"
