@@ -1,10 +1,5 @@
 Plexm::Application.routes.draw do
-
-
-
-
   resources :blogs
-
 
   resources :prelaunches
 
@@ -24,4 +19,8 @@ Plexm::Application.routes.draw do
   resources :users do
 	  resources :uploads
 	end
+
+	match 'auth/:provider/callback', to: 'sessions#create'
+	match 'auth/failure', to: redirect('/')
+	match 'signout', to: 'sessions#destroy', as: 'signout'
 end
