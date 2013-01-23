@@ -8,6 +8,7 @@ class Ability
     else
 			can :read, Bounty
 			can :read, Prelaunch
+			can :read, Blog
       if user.has_role? :standard
 				can :manage, Bounty
 				can :manage, Upload
