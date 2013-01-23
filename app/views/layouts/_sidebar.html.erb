@@ -1,0 +1,13 @@
+<div class="well">
+	<div id="user_nav">
+		<% if current_user %>
+			Signed in as <strong><%= current_user.name %></strong>!
+		<% else %>
+			<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: 'btn btn-primary btn-block btn-large' %>
+		<% end %>
+	</div>
+</div>
+<div class="alert alert-success">
+	<h3><a href="http://igg.me/p/318747/x/2186356">On indiegogo</a></h3>
+	<iframe src="http://www.indiegogo.com/project/318747/widget/2186356" width="224px" height="439px" frameborder="0" scrolling="no"></iframe>
+</div>
