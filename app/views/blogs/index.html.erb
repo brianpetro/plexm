@@ -1,23 +1,23 @@
-<h1>Listing blogs</h1>
+<h1>The PlexM Blog</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Author</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @blogs.each do |blog| %>
   <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.body %></td>
-    <td><%= blog.author %></td>
-    <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+			<ul class="unstyled">
+				<li><h2><%= link_to blog.title, blog %></h3></li>
+    		<li><span class="lead"><%= simple_format(blog.body) %></span></li>
+   		  <li><i>By: <%= blog.author %></i></li>
+				<% if !current_user.nil? and current_user.has_role? :admin %>
+		  		<li><%= link_to 'Edit', edit_blog_path(blog) %></li>
+		  		<li><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+				<% end %>
+			</ul>
+		</td>
   </tr>
 <% end %>
 </table>
