@@ -23,33 +23,33 @@
 	<% end %>
 <% end %>
 </table>
-
-<% if current_user.has_role? :admin %>
-	<table class="table table-bordered">
-		<tr><th>Bounties Record (Admin)</th></tr>
-		<tr>
-			<th></th>
-			<th>Headline</th>
-			<th>Bounty</th>
-			<th>Set by:</th>
-			<th>Paid</th>
-			<th>Closed</th>
-		</tr>
-	<% @bounties.each do |bounty| %>
-		<% if bounty.paid == false or bounty.closed? %>
+<% if user_signed_in? %>
+	<% if current_user.has_role? :admin %>
+		<table class="table table-bordered">
+			<tr><th>Bounties Record (Admin)</th></tr>
 			<tr>
-				<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
-				<td><%= bounty.title %></td>
-				<td>$<%= bounty.bounty %></td>
-				<td><%= get_user_name(bounty.user_id) %></td>
-				<td><%= bounty.paid %></td>
-				<td><%= bounty.closed %></td>
+				<th></th>
+				<th>Headline</th>
+				<th>Bounty</th>
+				<th>Set by:</th>
+				<th>Paid</th>
+				<th>Closed</th>
 			</tr>
+		<% @bounties.each do |bounty| %>
+			<% if bounty.paid == false or bounty.closed? %>
+				<tr>
+					<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+					<td><%= bounty.title %></td>
+					<td>$<%= bounty.bounty %></td>
+					<td><%= get_user_name(bounty.user_id) %></td>
+					<td><%= bounty.paid %></td>
+					<td><%= bounty.closed %></td>
+				</tr>
+			<% end %>
 		<% end %>
+		</table>
 	<% end %>
-	</table>
 <% end %>
-
 <br />
 
 <%= link_to 'New Bounty', new_bounty_path, class: 'btn btn-large btn-block btn-primary' %>
