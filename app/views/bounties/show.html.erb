@@ -1,10 +1,11 @@
 <div class="row">
-	<div class="span8">
-		<% if @bounty.user_id == current_user.id %>
+	<% if @bounty.user_id == current_user.id %>
+		<div class="span9">
 			<%= render 'confirm_deal' %>
-		<% end %>
-
-		<div class="well well-small">
+		</div>
+	<% end %>
+	<div class="span6">
+		<div class="">
 			<h2>
 				<%= @bounty.title %>
 			</h2>
@@ -17,32 +18,9 @@
 				<tr><td><%= simple_format(@bounty.body) %></td></tr>
 			</table>
 		</div>
-		
-		<h3>Discussions</h3>
-		<p><span class="lead muted">Discuss the buyer's needs on this public forum.</span></p>
-	
-		<ul class="unstyled">
-			<% @bounty.discussions.each do |d| %>
-				<li>
-					<div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span>
-						<ul class="unstyled">
-							<% @bounty.discussion_comments.each do |dc| %>
-								<% if dc.discussion_id == d.id %>
-									<li><i class="icon-chevron-right"></i> <%= dc.comment %> <span class="muted"><%= get_user_name(dc.user_id) %></span></li>
-								<% end %>
-							<% end %>
-							<li><%= link_to 'Add Comment', new_bounty_discussion_comment_path(@bounty, discussion_id: d.id), class: 'btn btn-small' %></li>
-						</ul>
-					</div>
-				</li>
-			<% end %>
-		</ul>
-
-		<%= render 'discussions/form' %>
-
 	</div>
-	
-	<div class="span4">
+
+	<div class="span3">
 		<% if @bounty.closed? %>
 			<div class="alert alert-success">
 				<h1>Bounty Closed!</h1>
@@ -71,6 +49,33 @@
 				<a href="http://www.plexm.com" class="dwolla_button btn-block btn" data-name="Bounty Package" data-desc="Buyer selects desired submission by artist who wants the bounty." data-amount="<%= @bounty.bounty %>" data-shipping="0" data-tax="0" data-key="8d78xAb4zBaL+CzTCdECEL0/sjboDegixOCrCubwFMEONlWQmB">Set Bounty with Dwolla</a>
 			<% end %>
 		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span9">	
+		<h3>Discussions</h3>
+		<p><span class="lead muted">Discuss the buyer's needs on this public forum.</span></p>
+	
+		<ul class="unstyled">
+			<% @bounty.discussions.each do |d| %>
+				<li>
+					<div class="well"><%= d.discussion %> <span class="muted"><%= get_user_name(d.user_id) %></span>
+						<ul class="unstyled">
+							<% @bounty.discussion_comments.each do |dc| %>
+								<% if dc.discussion_id == d.id %>
+									<li><i class="icon-chevron-right"></i> <%= dc.comment %> <span class="muted"><%= get_user_name(dc.user_id) %></span></li>
+								<% end %>
+							<% end %>
+							<li><%= link_to 'Add Comment', new_bounty_discussion_comment_path(@bounty, discussion_id: d.id), class: 'btn btn-small' %></li>
+						</ul>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+
+		<%= render 'discussions/form' %>
+
 	</div>
 </div>
 
