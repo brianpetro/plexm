@@ -3,6 +3,9 @@ Plexm::Application.routes.draw do
 
 
 
+  resources :blogs
+
+
   resources :prelaunches
 
   resources :bounties do
