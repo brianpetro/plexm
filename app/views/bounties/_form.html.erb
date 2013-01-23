@@ -6,7 +6,9 @@
     <%= f.input :title %>
     <%= f.input :body %>
     <%= f.input :bounty %>
-    <%= f.input :paid, label: 'Is the bounty secured by payment?' %>		
+		<% if current_user.has_role? :admin %>
+    	<%= f.input :paid, label: 'Is the bounty secured by payment?' %>
+		<% end %>
   </div>
 
   <div class="form-actions">
