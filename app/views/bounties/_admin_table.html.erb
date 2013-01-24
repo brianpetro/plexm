@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+	<tr><th>Bounties Record (Admin)</th></tr>
+	<tr>
+		<th></th>
+		<th>Headline</th>
+		<th>Bounty</th>
+		<th>Set by:</th>
+		<th>Paid</th>
+		<th>Closed</th>
+	</tr>
+	<% @bounties.each do |bounty| %>
+		<% if bounty.paid == false or bounty.closed? %>
+			<tr>
+				<td><%= link_to 'View', bounty, class: 'btn btn-small btn-primary btn-block' %></td>
+				<td><%= bounty.title %></td>
+				<td>$<%= bounty.bounty %></td>
+				<td><%= get_user_name(bounty.user_id) %></td>
+				<td><%= bounty.paid %></td>
+				<td><%= bounty.closed %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
