@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 		  user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 			user.assign_default_role
 			user.email = auth.info.email
-			user.fbusername = auth.info.username
+			user.fbusername = auth.username
 		  user.save(:validate => false)
 		end
 	end
