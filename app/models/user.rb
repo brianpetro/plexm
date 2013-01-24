@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
 		  user.save(:validate => false)
 		end
 	end
+
+	def facebook
+		@facebook ||= Koala::Facebook::API.new(oauth_token)
+	end
 end
