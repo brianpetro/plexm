@@ -46,29 +46,34 @@
 		</div>
 		<% if @bounty.user_id == current_user.id %>
 			<% unless @bounty.paid? %>
-				<a href="http://www.plexm.com" class="dwolla_button btn-block btn" data-name="Bounty Package" data-desc="Buyer selects desired submission by artist who wants the bounty." data-amount="<%= @bounty.bounty %>" data-shipping="0" data-tax="0" data-key="8d78xAb4zBaL+CzTCdECEL0/sjboDegixOCrCubwFMEONlWQmB">Set Bounty with Dwolla</a>
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<ul class="nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="btn btn-large btn-block btn-primary">Secure Bounty</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="http://www.plexm.com" class="dwolla_button" data-name="Bounty Package" data-desc="Buyer selects desired submission by artist who wants the bounty." data-amount="<%= @bounty.bounty %>" data-shipping="0" data-tax="0" data-key="8d78xAb4zBaL+CzTCdECEL0/sjboDegixOCrCubwFMEONlWQmB">Set Bounty with Dwolla</a>
+							</li>
+							<li>					
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+									<!-- Identify your business so that you can collect the payments. -->
+									<input type="hidden" name="business" value="QZKGPJJHH6AYJ">
 
-					<!-- Identify your business so that you can collect the payments. -->
-					<input type="hidden" name="business" value="QZKGPJJHH6AYJ">
+									<!-- Specify a Buy Now button. -->
+									<input type="hidden" name="cmd" value="_xclick">
 
-					<!-- Specify a Buy Now button. -->
-					<input type="hidden" name="cmd" value="_xclick">
+									<!-- Specify details about the item that buyers will purchase. -->
+									<input type="hidden" name="item_name" value="Secure Bounty">
+									<input type="hidden" name="amount" value="<%= @bounty.bounty %>">
+									<input type="hidden" name="currency_code" value="USD">
 
-					<!-- Specify details about the item that buyers will purchase. -->
-					<input type="hidden" name="item_name" value="Secure Bounty">
-					<input type="hidden" name="amount" value="<%= @bounty.bounty %>">
-					<input type="hidden" name="currency_code" value="USD">
-
-					<!-- Display the payment button. -->
-					<input type="image" name="submit" border="0"
-					src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-					alt="PayPal - The safer, easier way to pay online">
-					<img alt="" border="0" width="1" height="1"
-					src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-				</form>
-
+									<!-- Display the payment button. -->
+									<button name="submit" class="btn btn-block btn-primary btn-large">Set Bounty with PayPal</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
 			<% end %>
 		<% end %>
 	</div>
