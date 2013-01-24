@@ -43,3 +43,5 @@ gem 'best_in_place'
 gem 'bootswatch-rails'
 
 gem 'omniauth-facebook', "1.4.0"
+
+gem 'koala'
