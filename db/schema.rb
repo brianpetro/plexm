@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123181008) do
+ActiveRecord::Schema.define(:version => 20130124010702) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20130123181008) do
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string   "fbusername"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
