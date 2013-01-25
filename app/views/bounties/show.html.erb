@@ -9,6 +9,11 @@
 			<h2>
 				<%= @bounty.title %>
 			</h2>
+			<i class="muted lead">Tagged: 
+				<% @bounty.tags.each do |t| %>
+					<%= t.name %>,
+				<% end %>
+			</i>
 			<p>
 				<b>Bounty set by:</b>
 				<%= get_user_name(@bounty.user_id) %>
