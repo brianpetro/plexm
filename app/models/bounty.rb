@@ -1,5 +1,5 @@
 class Bounty < ActiveRecord::Base
-  attr_accessible :body, :bounty, :title, :user_id, :paid, :winner, :closed, :tag_ids
+  attr_accessible :body, :bounty, :title, :user_id, :paid, :winner, :closed, :tag_tokens
 	belongs_to :user
 	has_many :submissions
 	has_many :uploads, through: :submissions
@@ -8,4 +8,9 @@ class Bounty < ActiveRecord::Base
 
 	has_many :taggings
 	has_many :tags, through: :taggings, uniq: true
+	attr_reader :tag_tokens
+	
+	def tag_tokens=(ids)
+		self.tag_ids = ids.split(" ")
+	end
 end
