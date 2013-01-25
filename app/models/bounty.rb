@@ -5,4 +5,6 @@ class Bounty < ActiveRecord::Base
 	has_many :uploads, through: :submissions
 	has_many :discussions
 	has_many :discussion_comments
+
+	has_many :taggings
 end
