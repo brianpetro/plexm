@@ -11,6 +11,11 @@
 		<% end %>
   </div>
 
+	<div>
+		<%= f.label :tag_ids, 'Tags' %> <br>
+		<%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true} %>
+	</div>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
