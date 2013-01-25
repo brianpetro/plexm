@@ -15,7 +15,7 @@
 			</p>
 			<table class="table table-bordered">
 				<tr><th>Details:</th></tr>
-				<tr><td><%= simple_format(@bounty.body) %></td></tr>
+				<tr><td><%= simple_format(auto_link(@bounty.body)) %></td></tr>
 			</table>
 		</div>
 	</div>
