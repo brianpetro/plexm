@@ -7,4 +7,5 @@ class Bounty < ActiveRecord::Base
 	has_many :discussion_comments
 
 	has_many :taggings
+	has_many :tags, through: :taggings
 end
