@@ -1,4 +1,6 @@
 Plexm::Application.routes.draw do
+
+	resources :tags
   resources :blogs
 
   resources :prelaunches
