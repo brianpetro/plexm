@@ -12,8 +12,8 @@
   </div>
 
 	<div>
-		<%= f.label :tag_ids, 'Tags' %> <br>
-		<%= f.collection_select :tag_ids, Tag.order(:name), :id, :name, {}, {multiple: true} %>
+		<%= f.label :tag_tokens, 'Tags' %> <br>
+		<%= f.text_field :tag_tokens %>
 	</div>
 
   <div class="form-actions">
