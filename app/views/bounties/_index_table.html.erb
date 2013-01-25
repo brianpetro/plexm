@@ -18,7 +18,7 @@
 			<% end %>
 		<% else %>
 			<% if bounty.user_id == current_user.id %>
-				<tr class="alert alert-danger"><th>Your Bounty is:</th><th>Not Secured</th><th></th><th></th></tr>
+				<tr class="alert alert-danger"><th>Your Bounty is:</th><th>Not Secured</th><th></th><th><%= link_to 'Destroy', bounty, method: :delete, class: 'btn btn-small btn-danger', data: { confirm: 'Are you sure?' } %></th></tr>
 				<tr class="alert alert-danger">
 							<td><%= link_to 'View', bounty, class: 'btn btn-small btn-danger btn-block' %></td>
 							<td><%= bounty.title %></td>
