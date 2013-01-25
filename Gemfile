@@ -45,3 +45,5 @@ gem 'bootswatch-rails'
 gem 'omniauth-facebook', "1.4.0"
 
 gem 'koala'
+
+gem 'rails_autolink'
