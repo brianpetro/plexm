@@ -12,8 +12,8 @@
   </div>
 
 	<div>
-		<%= f.label :tag_tokens, 'Tags' %> <br>
-		<%= f.text_field :tag_tokens %>
+		 <br>
+		<%= f.text_field :tag_tokens, data: {load: @bounty.tags} %>
 	</div>
 
   <div class="form-actions">
